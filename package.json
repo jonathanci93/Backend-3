@@ -1,0 +1,33 @@
+{
+  "name": "entrega-final-primer-corte-mocks",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node src/server.js",
+    "start": "node src/server.js",
+    "test": "mocha \"src/test/**/*.test.js\" --timeout 15000"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^9.0.0",
+    "bcrypt": "^5.1.1",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^4.21.2",
+    "mongoose": "^8.19.2",
+    "morgan": "^1.10.1",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
+  },
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "chai": "^6.2.0",
+    "cross-env": "^10.1.0",
+    "mocha": "^11.7.4",
+    "supertest": "^7.1.4"
+  }
+}

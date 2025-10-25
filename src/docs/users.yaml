@@ -1,0 +1,29 @@
+openapi: 3.0.1
+info:
+  title: Users Module
+  version: "1.0.0"
+tags:
+  - name: Users
+paths:
+  /api/users:
+    get:
+      summary: List users
+      tags: [Users]
+      responses:
+        "200":
+          description: Users list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status: { type: string, example: success }
+                  payload:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        _id: { type: string }
+                        firstName: { type: string }
+                        lastName: { type: string }
+                        email: { type: string }

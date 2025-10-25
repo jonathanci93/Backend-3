@@ -1,0 +1,123 @@
+tags:
+  - name: Adoption
+    description: Endpoints de adopciones
+
+paths:
+  /api/adoption/{uid}/{pid}:
+    post:
+      summary: Adopta una mascota
+      tags: [Adoption]
+      parameters:
+        - in: path
+          name: uid
+          required: true
+          schema:
+            type: string
+          description: ID del usuario
+        - in: path
+          name: pid
+          required: true
+          schema:
+            type: string
+          description: ID de la mascota
+      responses:
+        '201':
+          description: Adopción creada
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  payload:
+                    type: object
+                    properties:
+                      user:
+                        type: string
+                        example: 68fd0f6001cdb776e8ad623f
+                      pet:
+                        type: string
+                        example: 68fd0f6501cdb776e8ad6241
+        '404':
+          description: Usuario o mascota no encontrada
+        '409':
+          description: La mascota ya está adoptada
+
+  /api/adoption:
+    get:
+      summary: Lista todas las adopciones
+      tags: [Adoption]
+      responses:
+        '200':
+          description: Array de mascotas adoptadas (con owner)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  payload:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        _id:
+                          type: string
+                        name:
+                          type: string
+                          example: Firulais
+                        specie:
+                          type: string
+                          example: dog
+                        adopted:
+                          type: boolean
+                          example: true
+                        owner:
+                          type: object
+                          properties:
+                            _id:
+                              type: string
+                            firstName:
+                              type: string
+                              example: Ana
+                            lastName:
+                              type: string
+                              example: Rios
+                            email:
+                              type: string
+                              example: ana@example.com
+
+  /api/adoption/{pid}:
+    delete:
+      summary: Revierte una adopción (devuelve la mascota)
+      tags: [Adoption]
+      parameters:
+        - in: path
+          name: pid
+          required: true
+          schema:
+            type: string
+          description: ID de la mascota
+      responses:
+        '200':
+          description: Adopción revertida
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  payload:
+                    type: object
+                    properties:
+                      pet:
+                        type: string
+                        example: 68fd0f6501cdb776e8ad6241
+        '404':
+          description: Mascota no encontrada
