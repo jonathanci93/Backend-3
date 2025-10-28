@@ -55,7 +55,7 @@ docker compose exec api npm test
 # Docker Hub
 
 La imagen del proyecto en Docker Hub:  
- [https://hub.docker.com/r/jonathanci93/backend3_jonathanci](https://hub.docker.com/r/jonathanci93/backend3_jonathanci)
+ [https://hub.docker.com/r/jonathanci93/backend3_jonathanci]
 
 
 

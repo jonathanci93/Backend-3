@@ -31,12 +31,14 @@ describe("Adoption router", () => {
     server.close();
     });
 
-
+    //* Tests
+    //! Test adopcion de mascota
     it("POST /api/adoption/:uid/:pid adopta una mascota", async () => {
         const res = await agent.post(`/api/adoption/${userId}/${petId}`);
         expect(res.status).to.equal(201);
         expect(res.body.status).to.equal("success");
     });
+    //! Test lista de mascotas adoptadas
 
     it("GET /api/adoption lista adoptados", async () => {
         const res = await agent.get(`/api/adoption`);
@@ -44,7 +46,7 @@ describe("Adoption router", () => {
         expect(res.body.payload).to.be.an("array");
         expect(res.body.payload[0]).to.have.property("owner");
     });
-
+    //! Test reversión de adopción
     it("DELETE /api/adoption/:pid revierte adopción", async () => {
         const res = await agent.delete(`/api/adoption/${petId}`);
         expect(res.status).to.equal(200);
